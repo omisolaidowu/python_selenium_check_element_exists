@@ -45,6 +45,3 @@ class TestDropDown(Selectors):
             drop_down.select_by_visible_text("Sunday")
 
         set_up.tearDown()
-
-
-

@@ -15,8 +15,8 @@ desired_caps = {
 			"name" : "Dropdown test",
 			"platformName" : os.getenv("test_OS")
 		},
-		"browserName" : "FireFox",
-		"browserVersion" : "103.0",
+		"browserName" : "Chrome",
+		"browserVersion" : "114.0",
 	}
 gridURL = "https://{}:{}@hub.lambdatest.com/wd/hub".format(LT_USERNAME, LT_ACCESS_KEY)
 
