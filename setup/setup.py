@@ -7,23 +7,25 @@ load_dotenv('.env')
 LT_USERNAME = os.getenv("LT_USERNAME")
 LT_ACCESS_KEY = os.getenv("LT_ACCESS_KEY")
 
-desired_caps = {
-		'LT:Options' : {
-			"user" : os.getenv("LT_USERNAME"),
-			"accessKey" : os.getenv("LT_ACCESS_KEY"),
-			"build" : "Dropdown test-1",
-			"name" : "Dropdown test",
-			"platformName" : os.getenv("test_OS")
-		},
-		"browserName" : "Chrome",
-		"browserVersion" : "114.0",
-	}
+options = webdriver.ChromeOptions()
+options.browser_version = "114.0"
+options.platform_name = "Windows 10"
+lt_options = {}
+lt_options["username"] = os.getenv("LT_USERNAME")
+lt_options["accessKey"] = os.getenv("LT_ACCESS_KEY")
+lt_options["build"] = "e-commerce and dropdown use cases"
+lt_options["project"] = "Elements Check Tests"
+lt_options["name"] = "E-commerce and dropdown tests"
+lt_options["w3c"] = True
+lt_options["plugin"] = "python-python"
+options.set_capability('LT:Options', lt_options)
+
 gridURL = "https://{}:{}@hub.lambdatest.com/wd/hub".format(LT_USERNAME, LT_ACCESS_KEY)
 
 
 class Setting:    
     def __init__(self):
-        self.driver = webdriver.Remote(command_executor=gridURL, desired_capabilities= desired_caps)
+        self.driver = webdriver.Remote(command_executor=gridURL, options= options)
   
     def setUp(self):
         self.driver.implicitly_wait(10)
