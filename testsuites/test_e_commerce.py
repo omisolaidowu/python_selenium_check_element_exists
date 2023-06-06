@@ -34,12 +34,11 @@ class TestBuy(Selectors):
         
         wish_list = set_up.driver.find_element(By.CLASS_NAME, self.wish_list)
         
-        #Check is element is visible and active
+        #Check if element is visible and active
         assert wish_list.is_displayed(), "wishlist element not visible"
         assert wish_list.is_enabled(), "wishlist element is inactive"
 
         #Use JavaScript to click element since the target is dynamic
-
         set_up.driver.execute_script("arguments[0].click();", wish_list)
 
         set_up.tearDown()
